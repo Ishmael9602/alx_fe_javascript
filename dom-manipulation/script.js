@@ -8,6 +8,7 @@ let quotes = [
 const quoteDisplay = document.getElementById('quoteDisplay');
 const categoryFilter = document.getElementById('categoryFilter');
 const addQuoteFormContainer = document.getElementById('addQuoteForm');
+const syncMessageDiv = document.getElementById('syncMessage');  // UI sync message div
 
 // Load quotes from localStorage
 function loadQuotes() {
@@ -166,7 +167,15 @@ async function syncQuotes() {
     saveQuotes();
     populateCategories();
     filterQuotes();
-    alert('Quotes synchronized with server.');
+
+    // Show UI sync message instead of alert
+    if (syncMessageDiv) {
+      syncMessageDiv.textContent = "Quotes synced with server!";
+      setTimeout(() => { syncMessageDiv.textContent = ""; }, 3000);
+    } else {
+      alert('Quotes synchronized with server.');
+    }
+
   } catch (error) {
     console.error('Sync error:', error);
     alert('Failed to sync quotes with server.');

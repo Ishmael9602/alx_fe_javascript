@@ -2,88 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dynamic Quote Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f7f7f7;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    #quoteDisplay {
-      margin: 20px auto;
-      padding: 20px;
-      width: 80%;
-      border: 2px solid #2c3e50;
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin: 10px 5px;
-      cursor: pointer;
-      background-color: #2c3e50;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-    }
-
-    select, input {
-      margin: 5px;
-      padding: 8px;
-    }
-
-    #syncNotification {
-      background-color: #dff0d8;
-      color: #3c763d;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      display: block;
-      text-align: center;
-    }
-
-    input[type="file"] {
-      margin-top: 10px;
-    }
-  </style>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <div id="syncNotification"></div>
-
-  <div id="quoteDisplay"></div>
-
-  <button id="newQuote" onclick="showRandomQuote()">Show New Quote</button>
-
   <div>
-    <label for="categoryFilter"><strong>Filter by Category:</strong></label>
-    <select id="categoryFilter" onchange="filterQuotes()">
-      <!-- Categories populated dynamically -->
-    </select>
+    <select id="categoryFilter"></select>
+    <button id="newQuote">Show New Quote</button>
   </div>
 
-  <hr />
+  <div id="quoteDisplay" style="margin: 20px 0; font-weight: bold;"></div>
 
-  <div id="formContainer">
-    <!-- Add quote form populated by JS -->
+  <div id="addQuoteForm"></div>
+
+  <div style="margin-top: 20px;">
+    <button id="exportBtn">Export Quotes</button>
+    <input type="file" id="importFile" accept=".json" />
   </div>
+  <div id="syncMessage" style="color: green; font-weight: bold; margin-top: 10px;"></div>
 
-  <hr />
-
-  <div>
-    <button onclick="exportQuotes()">Export Quotes</button>
-    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
-  </div>
 
   <script src="script.js"></script>
 </body>
